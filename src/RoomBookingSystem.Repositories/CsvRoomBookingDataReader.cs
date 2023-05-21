@@ -1,5 +1,7 @@
-﻿using RoomBookingSystem.Interfaces.Models;
+﻿using CsvHelper;
+using RoomBookingSystem.Interfaces.Models;
 using RoomBookingSystem.Interfaces.Repository;
+using System.Globalization;
 
 namespace RoomBookingSystem.Repositories
 {
@@ -7,51 +9,36 @@ namespace RoomBookingSystem.Repositories
     {
         public async Task<IEnumerable<IRoomBookingRequest>> GetRoomBookingRequests()
         {
-            await Task.Delay(0);
-            return new List<IRoomBookingRequest>()
+            var res = new List<IRoomBookingRequest>();
+            using var reader = new StreamReader("DummyData.csv");
+            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            csv.Context.RegisterClassMap<RoomBookingRequestMap>();
+            var records = csv.GetRecordsAsync<RoomBookingRequest>();
+            await foreach (var item in records)
             {
-                new RoomBookingRequest() { StartDateTime =  new DateTime(2023,5,21, 13,0,0),
-                EndDateTime =  new DateTime(2023,5,21, 14,0,0),
-                Name = "Booker 1", Notes = "Test Booking 1", Organiser = "hello"
-                },
-                new RoomBookingRequest() { StartDateTime =  new DateTime(2023,5,21, 13,30,0),
-                    EndDateTime =  new DateTime(2023,5,21, 14,30,0),
-                    Name = "Booker 2", Notes = "Test Booking 1", Organiser = "hello"
-                },
-                new RoomBookingRequest() { StartDateTime =  new DateTime(2023,5,21, 13,30,0),
-                    EndDateTime =  new DateTime(2023,5,21, 14,30,0),
-                    Name = "Booker 1", Notes = "Test Booking 1", Organiser = "hello"
-                },
-                new RoomBookingRequest() { StartDateTime =  new DateTime(2023,5,23, 15,0,0),
-                    EndDateTime =  new DateTime(2023,5,23, 16,0,0),
-                    Name = "Booker 3", Notes = "Test Booking 1", Organiser = "hello"
-                },
-                new RoomBookingRequest() { StartDateTime =  new DateTime(2023,5,23, 9,0,0),
-                    EndDateTime =  new DateTime(2023,5,23, 9,30,0),
-                    Name = "Booker 3", Notes = "Test Booking 1", Organiser = "hello"
-                },
-                new RoomBookingRequest() { StartDateTime =  new DateTime(2023,5,23, 15,0,0),
-                    EndDateTime =  new DateTime(2023,5,23, 17,0,0),
-                    Name = "Booker 3", Notes = "Test Booking 1", Organiser = "hello"
-                },
-                new RoomBookingRequest() { StartDateTime =  new DateTime(2023,5,23, 15,30,0),
-                    EndDateTime =  new DateTime(2023,5,23, 16,30,0),
-                    Name = "Booker 2", Notes = "Test Booking 1", Organiser = "hello"
-                },
-                new RoomBookingRequest() { StartDateTime =  new DateTime(2023,5,25, 16,30,0),
-                EndDateTime =  new DateTime(2023,5,25, 17,30,0),
-                Name = "Booker 3", Notes = "Test Booking 1", Organiser = "Hi"
-                },
-                new RoomBookingRequest() { StartDateTime =  new DateTime(2023,5,25, 16,30,0),
-                    EndDateTime =  new DateTime(2023,5,25, 17,30,0),
-                    Name = "Booker 3", Notes = "Test Booking 1", Organiser = "Hi"
-                },
-                new RoomBookingRequest() { StartDateTime =  new DateTime(2023,5,25, 16,45,0),
-                    EndDateTime =  new DateTime(2023,5,25, 17,45,0),
-                    Name = "Booker 3", Notes = "Test Booking 1", Organiser = "Hi"
-                },
+                res.Add(item);
+            }
 
-            };
+            return res;
+        }
+    }
+
+    public sealed class RoomBookingRequestMap : CsvHelper.Configuration.ClassMap<RoomBookingRequest>
+    {
+        public RoomBookingRequestMap()
+        {
+            string format = "dd/MM/yyyy HH:mm:ss";
+            var cultureInfo = CultureInfo.GetCultureInfo("en-GB");
+
+            Map(m => m.StartDateTime).TypeConverterOption.Format(format)
+                .TypeConverterOption.CultureInfo(cultureInfo);
+
+            Map(m => m.EndDateTime).TypeConverterOption.Format(format)
+                .TypeConverterOption.CultureInfo(cultureInfo);
+
+            Map(m => m.Name);
+            Map(m => m.Organiser);
+            Map(m => m.Notes);
         }
     }
 }

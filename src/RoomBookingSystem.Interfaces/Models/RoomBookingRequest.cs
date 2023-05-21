@@ -4,6 +4,19 @@ namespace RoomBookingSystem.Interfaces.Models
 {
     public class RoomBookingRequest : IRoomBookingRequest
     {
+        public RoomBookingRequest()
+        {
+        }
+
+        public RoomBookingRequest(DateTime startDateTime, DateTime endDateTime, string? name, string? notes, string? organiser)
+        {
+            StartDateTime = startDateTime;
+            EndDateTime = endDateTime;
+            Name = name;
+            Notes = notes;
+            Organiser = organiser;
+        }
+
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public string? Name { get; set; }

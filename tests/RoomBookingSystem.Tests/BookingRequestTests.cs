@@ -15,6 +15,14 @@ namespace RoomBookingSystem.Tests
 
         public void should_create_valid_booking_request_object(string name, string organiser, string notes, string startDate, string endDate)
         {
+            var request = CreateRoomBookingRequest(name, organiser, notes, startDate, endDate);
+
+            Assert.NotNull(request);
+        }
+
+        private static RoomBookingRequest CreateRoomBookingRequest(string name, string organiser, string notes,
+            string startDate, string endDate)
+        {
             var request = new RoomBookingRequest()
             {
                 StartDateTime = DateTime.Parse(startDate),
@@ -23,8 +31,7 @@ namespace RoomBookingSystem.Tests
                 Organiser = organiser,
                 Notes = notes,
             };
-
-            Assert.NotNull(request);
+            return request;
         }
 
         [Theory]
@@ -37,15 +44,7 @@ namespace RoomBookingSystem.Tests
         [InlineData("Room 4", null, "", "25-5-2023 18:00:00", "25-5-2023 19:00:00", false)]
         public void should_validate_booking_request_object(string name, string organiser, string notes, string startDate, string endDate, bool expectedResult)
         {
-            var request = new RoomBookingRequest()
-            {
-                StartDateTime = DateTime.Parse(startDate),
-                EndDateTime = DateTime.Parse(endDate),
-                Name = name,
-                Organiser = organiser,
-                Notes = notes,
-            };
-
+            var request = CreateRoomBookingRequest(name, organiser, notes, startDate, endDate);
             Assert.NotNull(request);
             Assert.Equal(request.IsValid().Item1, expectedResult);
         }

@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E0B288A1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingSystem.Repositories", "src\RoomBookingSystem.Repositories\RoomBookingSystem.Repositories.csproj", "{FF6D8CFF-FBA2-47FA-A9AB-5EF33AF41FB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingSystem.Tests", "RoomBookingSystem.Tests\RoomBookingSystem.Tests.csproj", "{DFF6DE55-DDA2-472F-8895-A55D5AB85C8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingSystem.Tests", "tests\RoomBookingSystem.Tests\RoomBookingSystem.Tests.csproj", "{1BDE503C-4FC9-428F-89A9-07C33A703636}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,10 +39,10 @@ Global
 		{FF6D8CFF-FBA2-47FA-A9AB-5EF33AF41FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF6D8CFF-FBA2-47FA-A9AB-5EF33AF41FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF6D8CFF-FBA2-47FA-A9AB-5EF33AF41FB6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DFF6DE55-DDA2-472F-8895-A55D5AB85C8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DFF6DE55-DDA2-472F-8895-A55D5AB85C8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DFF6DE55-DDA2-472F-8895-A55D5AB85C8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DFF6DE55-DDA2-472F-8895-A55D5AB85C8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BDE503C-4FC9-428F-89A9-07C33A703636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BDE503C-4FC9-428F-89A9-07C33A703636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BDE503C-4FC9-428F-89A9-07C33A703636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BDE503C-4FC9-428F-89A9-07C33A703636}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,7 +52,7 @@ Global
 		{DDBDA623-4342-4834-8C3D-0869A0B2251E} = {2AAC40E0-17AB-45E1-9D63-4CD985AB359A}
 		{D17D5E72-57B0-41B6-8A5A-C40DB0C05949} = {2AAC40E0-17AB-45E1-9D63-4CD985AB359A}
 		{FF6D8CFF-FBA2-47FA-A9AB-5EF33AF41FB6} = {2AAC40E0-17AB-45E1-9D63-4CD985AB359A}
-		{DFF6DE55-DDA2-472F-8895-A55D5AB85C8A} = {E0B288A1-1CB8-4797-AC9B-B8D6D9F8D098}
+		{1BDE503C-4FC9-428F-89A9-07C33A703636} = {E0B288A1-1CB8-4797-AC9B-B8D6D9F8D098}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9EC0260A-4988-40D8-84A8-D1A737F1BCDA}
