@@ -9,6 +9,6 @@ namespace RoomBookingSystem.Interfaces.Repository
 {
     public interface IRoomBookingRepository
     {
-        IEnumerable<IRoomBookingRequest> GetRoomBookingRequests();
+        Task<IEnumerable<IRoomBookingRequest>> GetRoomBookingRequests();
     }
 }

@@ -4,7 +4,7 @@ namespace RoomBookingSystem.Interfaces.Factories
 {
     public interface IRoomBookingRepositoryFactory
     {
-        IRoomBookingRepository GetRoomBookingDataReader();
+        IRoomBookingRepository GetRoomBookingRepository();
     }
 
 }

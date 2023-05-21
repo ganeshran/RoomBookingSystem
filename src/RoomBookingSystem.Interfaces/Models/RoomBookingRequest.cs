@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RoomBookingSystem.Interfaces.Models;
+﻿using System.Text;
 
-namespace RoomBookingSystem.Services.Models
+namespace RoomBookingSystem.Interfaces.Models
 {
     public class RoomBookingRequest : IRoomBookingRequest
     {
@@ -14,20 +9,34 @@ namespace RoomBookingSystem.Services.Models
         public string? Name { get; set; }
         public string? Notes { get; set; }
         public string? Organiser { get; set; }
-        public bool IsValid()
+
+        public Tuple<bool, string> IsValid()
         {
+
+            var errorMessages = new StringBuilder();
+            var validity = true;
+            void checkValidity(string prop, string error)
             {
-                if (string.IsNullOrWhiteSpace(Organiser))
-                    throw new InvalidDataException("Organiser cannot be null");
-
-                if (string.IsNullOrWhiteSpace(Name))
-                    throw new InvalidDataException("Room Name cannot be null");
-
-                if (StartDateTime >= EndDateTime)
-                    throw new InvalidDataException("Start Date cannot be later or the same as end date");
-
-                return true;
+                if (!string.IsNullOrWhiteSpace(prop)) return;
+                validity = false;
+                errorMessages.Append($"{error} cannot be null, empty of whitespace");
             }
+         
+            checkValidity(this.Organiser, "Organiser Name");
+            checkValidity(this.Name, "Room Name");
+
+            if (StartDateTime >= EndDateTime)
+            {
+                validity = false;
+                errorMessages.Append("Start Date cannot be earlier than end Date");
+            }
+               
+
+            return new Tuple<bool, string>(validity, errorMessages.ToString());
+
         }
+
+        public override string ToString() => $"Room: {this.Name}, Organiser: {this.Organiser}, Start Date: {this.StartDateTime}, End Date: {this.EndDateTime}";
+        
     }
 }

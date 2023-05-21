@@ -10,15 +10,15 @@ namespace RoomBookingSystem.Interfaces.Models
     {
         DateTime StartDateTime { get; set; }
 
-         DateTime EndDateTime { get; set; }
+        DateTime EndDateTime { get; set; }
 
-         string? Name { get; set; }
+        string? Name { get; set; }
 
-         string? Notes { get; set; }
+        string? Notes { get; set; }
 
-         string? Organiser { get; set; }
+        string? Organiser { get; set; }
 
-        bool IsValid();
+        Tuple<bool, string> IsValid();
 
     }
 }

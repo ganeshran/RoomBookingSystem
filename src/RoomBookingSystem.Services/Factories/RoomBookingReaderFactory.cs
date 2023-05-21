@@ -11,7 +11,7 @@ namespace RoomBookingSystem.Services.Factories
 
     public class RoomBookingRepositoryFactory : IRoomBookingRepositoryFactory
     {
-        public IRoomBookingRepository GetRoomBookingDataReader()
+        public IRoomBookingRepository GetRoomBookingRepository()
         {
             return new CsvRoomBookingRepository();
         }

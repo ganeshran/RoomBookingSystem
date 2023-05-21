@@ -10,5 +10,7 @@ namespace RoomBookingSystem.Interfaces.Services
     public interface IRoomBookingService
     {
         Task<IEnumerable<IRoomBookingRequest>> RetrieveBookings(DateTime? startDate , DateTime? endDate);
+
+        Task<Dictionary<string, List<Tuple<IRoomBookingRequest,IRoomBookingRequest>>>> RetrieveConflictedBookings(DateTime? startDate , DateTime? endDate);
     }
 }
