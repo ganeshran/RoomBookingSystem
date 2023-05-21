@@ -5,6 +5,9 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        Console.WriteLine("*****************************************************************\n");
+        Console.WriteLine("*****************CONFLICT DETECTION IN ROOM BOOKING**************");
+        Console.WriteLine("\n*****************************************************************\n\n\n");
         var roomBookingService = new RoomBookingService(new RoomBookingRepositoryFactory());
         var conflicts = roomBookingService.RetrieveConflictedBookings().Result;
         if (!conflicts.Any())
