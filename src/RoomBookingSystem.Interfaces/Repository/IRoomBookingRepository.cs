@@ -7,7 +7,7 @@ using RoomBookingSystem.Interfaces.Models;
 
 namespace RoomBookingSystem.Interfaces.Repository
 {
-    public interface IRoomBookingDataReader
+    public interface IRoomBookingRepository
     {
         IEnumerable<IRoomBookingRequest> GetRoomBookingRequests();
     }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RoomBookingSystem.Interfaces.Models;
 
 namespace RoomBookingSystem.Interfaces.Services
 {
     public interface IRoomBookingService
     {
-        public
+        Task<IEnumerable<IRoomBookingRequest>> RetrieveBookings(DateTime? startDate , DateTime? endDate);
     }
 }

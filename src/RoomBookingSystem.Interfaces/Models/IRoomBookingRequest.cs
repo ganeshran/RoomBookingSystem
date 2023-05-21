@@ -8,28 +8,17 @@ namespace RoomBookingSystem.Interfaces.Models
 {
     public interface IRoomBookingRequest
     {
-        public DateTime StartDateTime { get; set; }
+        DateTime StartDateTime { get; set; }
 
-        public DateTime EndDateTime { get; set; }
+         DateTime EndDateTime { get; set; }
 
-        public string Name { get; set; }
+         string? Name { get; set; }
 
-        public string Notes { get; set; }
+         string? Notes { get; set; }
 
-        public string Organiser { get; set; }
+         string? Organiser { get; set; }
 
-        public bool IsValid()
-        {
-            if (string.IsNullOrWhiteSpace(Organiser))
-                throw new InvalidDataException("Organiser cannot be null");
+        bool IsValid();
 
-            if (string.IsNullOrWhiteSpace(Name))
-                throw new InvalidDataException("Room Name cannot be null");
-
-            if (StartDateTime >= EndDateTime)
-                throw new InvalidDataException("Start Date cannot be later or the same as end date");
-
-            return true;
-        }
     }
 }

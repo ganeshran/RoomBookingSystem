@@ -14,5 +14,20 @@ namespace RoomBookingSystem.Services.Models
         public string? Name { get; set; }
         public string? Notes { get; set; }
         public string? Organiser { get; set; }
+        public bool IsValid()
+        {
+            {
+                if (string.IsNullOrWhiteSpace(Organiser))
+                    throw new InvalidDataException("Organiser cannot be null");
+
+                if (string.IsNullOrWhiteSpace(Name))
+                    throw new InvalidDataException("Room Name cannot be null");
+
+                if (StartDateTime >= EndDateTime)
+                    throw new InvalidDataException("Start Date cannot be later or the same as end date");
+
+                return true;
+            }
+        }
     }
 }
