@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RoomBookingSystem.Interfaces.Factories;
 using RoomBookingSystem.Interfaces.Repository;
+using RoomBookingSystem.Repositories;
 
 namespace RoomBookingSystem.Services.Factories
 {

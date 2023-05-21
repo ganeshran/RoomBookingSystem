@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RoomBookingSystem.Repositories\RoomBookingSystem.Repositories.csproj" />
     <ProjectReference Include="..\RoomBookingSystem.Interfaces\RoomBookingSystem.Interfaces.csproj" />
   </ItemGroup>
 
